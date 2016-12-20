@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="master">
 <head>
   <meta charset="UTF-8">
   <title>Array Cardio 💪</title>
@@ -7,15 +7,20 @@
 
 </head>
 <body>
-  <div class="ink-grid">
+  <div   class="ink-grid">
     <div class="column-group">
-      <div class="all-100">
+      <div  class="ink-alert" role="alert" class="all-100">
 
 
   <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+
+  <ul  class="unstyled ink-sortable-list" ng-controller="Ctrl">
+    <li  ng-repeat="item in list1">{{item}}</li>
+  </ul>
 </div>
 </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
   <script src="master.js">
   </script>
 </body>
