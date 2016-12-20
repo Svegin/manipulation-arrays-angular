@@ -35,12 +35,23 @@ console.table(fifteen);
 // Array.prototype.map()
 // 2. Give us an array of the inventors' first and last names
 // The map() method creates a new array with the results of calling a provided function on every element in this array.
-const fullNames = inventors.map(inventor => inventor.first + " " + inventor.last);
+const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
  console.log(fullNames);
 
-// Array.prototype.sort()
+// Array.prototype.sort(). The sort() method sorts the elements of an array in place and returns the array.
 // 3. Sort the inventors by birthdate, oldest to youngest
+// const ordered = inventors.sort(function (a, b) {
+//
+//   if (a.year > b.year) {
+//     return 1;
+//   } else {
+//     return -1;
+//   }
+// });
+const ordered = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
 
+
+console.table(ordered);
 // Array.prototype.reduce()
 // 4. How many years did all the inventors live?
 
