@@ -1,5 +1,5 @@
 (function () {
-'use strict';
+// 'use strict';
 
 
 // Get your shorts on - this is an array workout!
@@ -49,24 +49,56 @@ const fullNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`
 //   }
 // });
 const ordered = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
-
-
 console.table(ordered);
-// Array.prototype.reduce()
+
+// Array.prototype.reduce(). The reduce() method applies a function against an accumulator and each value of the array (from left-to-right) to reduce it to a single value.
 // 4. How many years did all the inventors live?
+// var totalYears = 0;
+// for (var i = 0; i < inventors.length; i++) {
+//   totalYears  += inventors[i].year;
+// }
+const totalYears = inventors.reduce((total, inventor) => {
+  return total + (inventor.passed - inventor.year);
+}, 0);
+console.log(totalYears);
 
 // 5. Sort the inventors by years lived
+const oldest = inventors.sort(function (a, b) {
+  const lastGuy = a.passed - a.year;
+  const nextGuy = b.passed - b.year;
+  return lastGuy > nextGuy ? -1 : 1;
+});
+console.table(oldest);
 
 // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
 // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+// const category = document.querySelector('.mw-category');
+// const links = Array.from(category.querySelectorAll('a'));
+// const de = links
+//               .map(link => link.textContent)
+//               .filter(streetName => streetName.includes('de'));
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
+const alpha = people.sort((lastOne, nextOne) => {
+const [aLast, aFirst] = lastOne.split(', ');
+const [bLast, bFirst] = lastOne.split(', ');
+return aLast > bLast ? 1: -1;
+});
+console.log(alpha);
 
 // 8. Reduce Exercise
 // Sum up the instances of each of these
 const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+const trans = data.reduce((obj, item) =>{
+  if (!obj[item]) {
+    obj[item]  = 0;
+  }
+  obj[item]++;
+  return obj;
+}, {})
+console.log(trans);
 
 angular.module('master', [])
 .controller('Ctrl', Ctrl);
